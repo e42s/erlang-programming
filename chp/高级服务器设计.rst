@@ -1,0 +1,126 @@
+制约性能杀手
+  数据拷贝
+  上下文切换
+  内存分配
+  锁竞争
+
+  存储子系统
+  协议参数
+  缓存情况
+  系统页大小
+  系统调用代价
+
+
+基本套接字API
+   socket
+   bind
+   listen
+   accept
+   read/recv
+   write/send
+   close
+
+TCP状态变迁和socket API 
+
+
+IO模型
+   blocking I/O
+   unblocking I/O
+   I/O multiplexing(select and poll)
+   signal-driven I/O(SINGIO)
+   异步I/O(POSIX aio_)
+
+
+IO策略
+   多客户一线程，非阻塞（水平触发）
+      select()
+      poll()
+      /dev/poll
+      kequeue
+
+   多客户一线程， 非阻塞（改变通知）
+      epoll()
+      kevent
+      realtime signal
+      kqueue
+
+   每服务器线程一客户
+      NGPT
+      NPTL
+      FreeBSD线程
+
+
+多线程VS事件派遣方式
+
+     多线程 模型简单 难编程
+     事件派遣 性能高
+
+C10K Problem
+
+
+
+实现语言
+    C/C++
+       最大程度挖掘硬件和系统的潜力
+       编码、维护困难
+
+    Erlang
+       并发性
+       分布式 
+       健壮性
+       软实时性
+       热代码升级
+       递增式代码装载 
+       外部接口
+
+网络框架
+    ACE
+    libevent
+    Twisted
+    boost:asio
+
+
+
+明确的状态机和消息驱动
+    整个业务就是一个大的状态变迁图
+    一个物理链接对于一组状态机
+    状态的变化是消息引起的
+    消息是可以跟踪的
+
+
+协议设计
+    文本协议
+    二进制协议
+    XML/JSON
+    RFC标准协议
+
+协议解析
+     flex/bison(yacc/lex)
+     ragel
+     lemon
+     合适的库
+     手写解析
+
+稳定性
+     资源预分配
+     避免频繁的分配/释放内存
+
+进程间通讯（IPC）
+     共享内存
+     管道
+     消息传递
+
+
+集群，提高可用性
+    硬件
+      BIG IP F5
+      NetScalar
+    软件
+      Hadproxy
+      LVS
+
+内存数据库
+    Extremedb
+    Mencached
+    Mnesia
+    

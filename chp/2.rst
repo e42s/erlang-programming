@@ -4,36 +4,33 @@
 -----------------
 2.1.1 快速安装
 ^^^^^^^^^^^^^^^^^^^
-  1. Microsoft Windows
-   从http://www.erlang.org/download.html选择版本下载
+1. Microsoft Windows
+从http://www.erlang.org/download.html 选择版本下载
 
 
-  2. Linux
-  基于Debian的系统中，如Debian, Ubuntu等，
-  > sudo apt-get install erlang
-  Redhat系列系统中，
-  > sudo yum install  eralng
+2. Linux
+基于Debian的系统中，如Debian, Ubuntu等，
+> sudo apt-get install erlang
+Redhat系列系统中，
+> sudo yum install eralng
 
-
-
-
-  3. Mac OS X
-  通过MacPort, sudo port install erlang
+3. Mac OS X
+通过MacPort, sudo port install erlang
 
 2.1.2 通过源代码安装
 ^^^^^^^^^^^^^^^^^^^^^^^^^
-  1.获取Erlang源代码
-  通过浏览器或wget等工具
-  2.$ tar -xzf otp_src_R11B-4.tar.gz
-    $ cd otp_src_R11B-4
-    $ ./configure
-    $ make
-    $ sudo make install
+1.获取Erlang源代码
+通过浏览器或wget等工具
+2.解压并安装
+$ tar -xzf otp_src_R11B-4.tar.gz
+$ cd otp_src_R11B-4
+$ ./configure
+$ make
+$ sudo make install
 
 2.2 安装CEAN模块管理器
 -----------------------------
-   类似Perl的CPAN,几乎包含所有Erlang开源项目.
-   通过cean:install命令可用获取需要的模块
+类似Perl的CPAN,几乎包含所有Erlang开源项目.通过cean:install命令可用获取需要的模块
 
 
 
@@ -67,12 +64,13 @@ Erlang Shell
 在Eshell中可以进行交互式开发、调试、升级。
 通过快捷键Ctrl + C,或者输入erlang:halt()退出系统。
 
-Eshell还有其他一些有用的函数 
-  help()           列举可用的shell函数
-  cd()             改变当前目录
-  ls()             列举目录内容
-  i()              输出当前系统的运行时信息
-  memory()         输出内存使用信息
+..note::
+          Eshell还有其他一些有用的函数 
+           -  **help()**\           列举可用的shell函数
+           -  **cd()**\             改变当前目录
+           -  **ls()**\             列举目录内容
+           -  **i()**\              输出当前系统的运行时信息
+           -  **memory()**\         输出内存使用信息
  
 
 
@@ -88,28 +86,18 @@ Eshell还有其他一些有用的函数
      sat_hello() ->
      io:format("hello~n").
 
-::
-    > c(hello).
-    {ok,hello}
-
-{ok,hello} 表示hello模块编译成功。
 
 
-::
-  > hello:(say_hello)
-  > hello
+首行以"%"开头表示注释。接下来的module和export分别表示模块名和该模块中导出的函数。一个文件包含一个模块，且名字相同.
 
-运行hello模块的say_hello函数，得到结果hello
+..tip::
+        原则上应该把模块中定义的所有函数写在export的内容里。
+        export可以分为多行写，如，
+        ::
+          -export([fun1/0, fun2/1]).
+          -export([fun3/0, fun4/2]).
 
-回头看Erlang代码文件，首行以"%"开头表示注释。
-接下来的module和export分别表示模块名和该模块中导出的函数。
-一个文件包含一个模块，且名字相同.
-原则上应该把模块中定义的所有函数写在export的内容里。
-export可以分为多行写，如，
--export([fun1/0, fun2/1]).
--export([fun3/0, fun4/2]).
-
-
+现在我们来运行这个文件。
 1. 在Eralng shell里运行
 ::
     Eshell V5.9.2 (abort with ^G)
@@ -118,6 +106,20 @@ export可以分为多行写，如，
     2> hello:say_hello().
     hello
     ok
+
+
+::
+    > c(hello).
+    {ok,hello}
+
+{ok,hello} 表示hello模块编译成功。
+
+
+::
+    > hello:(say_hello).
+    > hello
+
+运行hello模块的say_hello函数，得到结果hello
 
 2. 在命令行中编译运行
 ::

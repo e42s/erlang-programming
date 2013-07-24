@@ -1,8 +1,27 @@
 附录
 ===============
-1.常用库函数参考手册
+1.常用库及库函数参考手册
 -----------------------
-详细可以参考Eralng stdlib手册
+
+
+常用lib
+^^^^^^^^^^^^^^^^^^^^^^^^
+stdlib    标准库
+mnesia    分布式数据库系统
+inets     ftp client, http client/server, tftp client/server等
+cryto     加密、解密，基于openssl
+ssl       加密socket通信，基于openssl
+ssh       ssh协议
+xmerl     xml解析
+snmp      snmp协议
+observer  分析和追踪分布式应用
+os_mon    对操作系统进行监控
+orber     实现CORBA对象请求服务
+dialyzer  静态分析
+edoc      生成文档
+eunit     单元测试
+
+
 
 io
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -77,13 +96,13 @@ all_loaded()	            返回所有载入模块的元组 {Module, AbsFileName}
  Erlang Programming
   
 3.社区
-^^^^^^^^^^^^^^^^^^^^^^^^^
+------------------------------------
 http://erlang-china.org  Erlang中文社区
 http://www.erlang.org/mailman/listinfo   Eralng邮件列表
 irc.freenode.net #eralng频道
 
 4.开源项目
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+------------------------------------------
 http://cean.process-one.net
 CEAN,
 http://yaws.hyber.org

@@ -2,21 +2,113 @@
 ===============================
 
 
-  使用Erlang的基础数据类型，和模式匹配、列表解析等特性可以方便
-地构造数据结构，表达算法。
+使用Erlang的基础数据类型，和模式匹配、列表解析等特性可以方便地构造数据结构，表达算法。
 
 
-算法分析
-----------------
 
 
 表、栈和队列
 -------------
+
+
 线性表    Lists
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
 数组      Arrays
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
 堆栈      Stack
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+::
+    -module(stack).
+    -export([emptyStack/0, stackEmpty/1, push/2, pop/1, top/1]).
+
+    emptyStack() -> [].
+
+    stackEmpty([]) -> true;
+    stackEmpty(_) -> fase.
+
+    push(x, xs) -> [x|xs].
+
+    pop([]) -> error("pop from an empty stack");
+    pop(_|xs) -> xs.
+
+    top([]) -> error("top from an empty stack");
+    top([x|_]) -> x.
+
+
+
+
+
+
 队列      Queye
-优先队列  Priority queues
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::  
+    -module(queue).
+    -export([emptyQueue/0, queueEmpty/1, ecqueue/2, dequeue/1, front/1, showQ/1]).
+
+    emptyQueue() -> [].
+
+    queueEmpty([]) -> True;
+    queueEmpty(_) -> False.
+
+    ecqueue(x, Q) -> Q ++ [x].
+
+    dequeue([_|xs]) -> xs;
+    dequeue([]) -> error("dequeue:empty queue").
+
+
+
+
+堆
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+::
+    -module(heap).
+    -export([emptyHeap/0, heapEmtpy/1, findHeap/1, insHeap/2, delHeap/1]).
+
+    emptyHeap() -> emtpyHP.
+
+    heapEmpty(emptyHP) -> true;
+    heapEmpty(_) -> false.
+
+    findHeap(emtpyHP) -> error("empty heap!");
+    findHeap({X, _, _, _}) -> X.
+
+    insHeap(X, H) -> merge({X, 1, emptyHP, emtpyHP}, H).
+
+    delHeap(emptyHP) -> error("empty heap!");
+    delHeap({_, _, A, B}) -> merge(A, B).
+
+    rank(emptyHP) -> 0;
+    rank({_, R, _, _}) -> R.
+
+    makeHP(X, A, B) ->
+        case rank(A) >= rank(B) of
+           true -> {X, rank(B)+1, A, B};
+           false -> {X, rank(A)+1, B, A}
+        end.
+
+    merge(H, emptyHP) -> H;
+    merge(emptyHP, H) -> H;
+    merge(H1, H2) ->
+        {X, _, A1, B1} = H1,
+        {Y, _, A2, B2} = H2,
+        if X =< Y -> makeHP(X, A1, merge(B1, H2));
+           X >  Y -> makeHP(Y, A2, merge(H1, B2))
+        end.
+
+
+
+
 
 
 树
@@ -50,3 +142,12 @@ AVL树     AVLtrees
  分治算法
  回溯算法
  动态规划
+
+
+算法并行化
+---------------
+并行算法
+^^^^^^^^^^^^^^
+
+八皇后
+^^^^^^^^^^^
