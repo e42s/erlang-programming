@@ -55,6 +55,7 @@
 
 
 ::  
+     %queue.erl
      -module(queue).
      -export([emptyQueue/0, queueEmpty/1, ecqueue/2, dequeue/1, front/1, showQ/1]).
 
@@ -73,7 +74,8 @@
 
 堆
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-::
+::   
+     %heap.erl
      -module(heap).
      -export([emptyHeap/0, heapEmtpy/1, findHeap/1, insHeap/2, delHeap/1]).
 

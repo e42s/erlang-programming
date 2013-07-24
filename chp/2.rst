@@ -48,6 +48,7 @@ Erlang Shell
 打开命令终端，输入erl启动Eshell。(Windows下也可双击"Erlang"图标。)
 
 ::
+   
    Eshell V5.9.2 (abort with ^G)
 
    >1
@@ -64,7 +65,7 @@ Erlang Shell
 在Eshell中可以进行交互式开发、调试、升级。
 通过快捷键Ctrl + C,或者输入erlang:halt()退出系统。
 
-..note::
+.. note::
            Eshell还有其他一些有用的函数 
            -  **help()**\           列举可用的shell函数
            -  **cd()**\             改变当前目录
@@ -90,14 +91,15 @@ Erlang Shell
 
 首行以"%"开头表示注释。接下来的module和export分别表示模块名和该模块中导出的函数。一个文件包含一个模块，且名字相同.
 
-..tip::
-        原则上应该把模块中定义的所有函数写在export的内容里。
-        export可以分为多行写，如，
+.. tip::
+         原则上应该把模块中定义的所有函数写在export的内容里。
+         export可以分为多行写，如，
         ::
           -export([fun1/0, fun2/1]).
           -export([fun3/0, fun4/2]).
 
 现在我们来运行这个文件。
+
 1. 在Eralng shell里运行
 ::
     Eshell V5.9.2 (abort with ^G)
