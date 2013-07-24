@@ -65,7 +65,7 @@ Erlang Shell
 通过快捷键Ctrl + C,或者输入erlang:halt()退出系统。
 
 ..note::
-          Eshell还有其他一些有用的函数 
+           Eshell还有其他一些有用的函数 
            -  **help()**\           列举可用的shell函数
            -  **cd()**\             改变当前目录
            -  **ls()**\             列举目录内容
@@ -107,19 +107,10 @@ Erlang Shell
     hello
     ok
 
-
-::
-    > c(hello).
-    {ok,hello}
-
 {ok,hello} 表示hello模块编译成功。
 
 
-::
-    > hello:(say_hello).
-    > hello
-
-运行hello模块的say_hello函数，得到结果hello
+hello:say_hello()运行hello模块的say_hello函数，得到结果hello
 
 2. 在命令行中编译运行
 ::

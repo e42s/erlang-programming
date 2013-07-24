@@ -27,21 +27,23 @@
 
 
 ::
-    -module(stack).
-    -export([emptyStack/0, stackEmpty/1, push/2, pop/1, top/1]).
 
-    emptyStack() -> [].
+     %stack
+     -module(stack).
+     -export([emptyStack/0, stackEmpty/1, push/2, pop/1, top/1]).
 
-    stackEmpty([]) -> true;
-    stackEmpty(_) -> fase.
+     emptyStack() -> [].
 
-    push(x, xs) -> [x|xs].
+     stackEmpty([]) -> true;
+     stackEmpty(_) -> fase.
 
-    pop([]) -> error("pop from an empty stack");
-    pop(_|xs) -> xs.
+     push(x, xs) -> [x|xs].
 
-    top([]) -> error("top from an empty stack");
-    top([x|_]) -> x.
+     pop([]) -> error("pop from an empty stack");
+     pop(_|xs) -> xs.
+
+     top([]) -> error("top from an empty stack");
+     top([x|_]) -> x.
 
 
 
@@ -53,18 +55,18 @@
 
 
 ::  
-    -module(queue).
-    -export([emptyQueue/0, queueEmpty/1, ecqueue/2, dequeue/1, front/1, showQ/1]).
+     -module(queue).
+     -export([emptyQueue/0, queueEmpty/1, ecqueue/2, dequeue/1, front/1, showQ/1]).
 
-    emptyQueue() -> [].
+     emptyQueue() -> [].
 
-    queueEmpty([]) -> True;
-    queueEmpty(_) -> False.
+     queueEmpty([]) -> True;
+     queueEmpty(_) -> False.
 
-    ecqueue(x, Q) -> Q ++ [x].
+     ecqueue(x, Q) -> Q ++ [x].
 
-    dequeue([_|xs]) -> xs;
-    dequeue([]) -> error("dequeue:empty queue").
+     dequeue([_|xs]) -> xs;
+     dequeue([]) -> error("dequeue:empty queue").
 
 
 
@@ -72,39 +74,39 @@
 堆
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 ::
-    -module(heap).
-    -export([emptyHeap/0, heapEmtpy/1, findHeap/1, insHeap/2, delHeap/1]).
+     -module(heap).
+     -export([emptyHeap/0, heapEmtpy/1, findHeap/1, insHeap/2, delHeap/1]).
 
-    emptyHeap() -> emtpyHP.
+     emptyHeap() -> emtpyHP.
 
-    heapEmpty(emptyHP) -> true;
-    heapEmpty(_) -> false.
+     heapEmpty(emptyHP) -> true;
+     heapEmpty(_) -> false.
 
-    findHeap(emtpyHP) -> error("empty heap!");
-    findHeap({X, _, _, _}) -> X.
+     findHeap(emtpyHP) -> error("empty heap!");
+     findHeap({X, _, _, _}) -> X.
 
-    insHeap(X, H) -> merge({X, 1, emptyHP, emtpyHP}, H).
+     insHeap(X, H) -> merge({X, 1, emptyHP, emtpyHP}, H).
 
-    delHeap(emptyHP) -> error("empty heap!");
-    delHeap({_, _, A, B}) -> merge(A, B).
+     delHeap(emptyHP) -> error("empty heap!");
+     delHeap({_, _, A, B}) -> merge(A, B).
 
-    rank(emptyHP) -> 0;
-    rank({_, R, _, _}) -> R.
+     rank(emptyHP) -> 0;
+     rank({_, R, _, _}) -> R.
 
-    makeHP(X, A, B) ->
+     makeHP(X, A, B) ->
         case rank(A) >= rank(B) of
-           true -> {X, rank(B)+1, A, B};
-           false -> {X, rank(A)+1, B, A}
+             true -> {X, rank(B)+1, A, B};
+             false -> {X, rank(A)+1, B, A}
         end.
 
-    merge(H, emptyHP) -> H;
-    merge(emptyHP, H) -> H;
-    merge(H1, H2) ->
-        {X, _, A1, B1} = H1,
-        {Y, _, A2, B2} = H2,
-        if X =< Y -> makeHP(X, A1, merge(B1, H2));
-           X >  Y -> makeHP(Y, A2, merge(H1, B2))
-        end.
+     merge(H, emptyHP) -> H;
+     merge(emptyHP, H) -> H;
+     merge(H1, H2) ->
+         {X, _, A1, B1} = H1,
+         {Y, _, A2, B2} = H2,
+         if X =< Y -> makeHP(X, A1, merge(B1, H2));
+             X >  Y -> makeHP(Y, A2, merge(H1, B2))
+         end.
 
 
 
