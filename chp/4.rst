@@ -36,32 +36,26 @@ ANF?
 
 1.模式匹配实现多态
 
-C的多态
-
-Java的多态
-
-Erlang
-
 ::
-    -module(area).
-    -export([area/1])
+     -module(area).
+     -export([area/1])
     
-    %正方形
-    area({square, Side}) ->
-       Side*Side;
+     %正方形
+     area({square, Side}) ->
+         Side*Side;
 
-    %圆形
-    area({circle, Radius}) ->
-      3.14*Radius*Radius;
+     %圆形
+     area({circle, Radius}) ->
+        3.14*Radius*Radius;
 
-   %三角形
-    area({triangle, A, B, C}) ->
-       S = (A + B + C)/2,
-       math:sqrt(S*(S-A)*(S-B)(S-C));
+     %三角形
+     area({triangle, A, B, C}) ->
+         S = (A + B + C)/2,
+         math:sqrt(S*(S-A)*(S-B)(S-C));
 
-   %其他形状
-    area(Other) ->
-       {undifined, Other}.
+     %其他形状
+     area(Other) ->
+         {undifined, Other}.
 
 
 
@@ -73,13 +67,13 @@ Erlang
 
 
 1.数据查询
-
-Likes=[{yao, erlang},{wang,java},{qi, php},{yang, c#},{chen,java}]
-查询一：Yao喜欢什么？
-[X||{P,X} <- Likes,  P=:=yao]
-
-查询二：谁喜欢Java？
-[P||{P, X} <- Likes, X=:=java]
+::
+     >1 Likes=[{yao, erlang},{wang,java},{qi, php},{yang, c#},{chen,java}]
+     %查询一：Yao喜欢什么？
+     >2 [X||{P,X} <- Likes,  P=:=yao]
+     %查询二：谁喜欢Java？
+     >3 [P||{P, X} <- Likes, X=:=java]
+     
 可以将以上的查询和表达式构造成函数，函数接受输入参数，并将上面的表达式抽象后作为函数体，这样其功能就大大增强了。
 
 2.定义树及其搜索函数
@@ -88,6 +82,12 @@ Likes=[{yao, erlang},{wang,java},{qi, php},{yang, c#},{chen,java}]
 
 惰性求值
 ^^^^^^^^^^
+参数传递机制
+- 值调用
+- 换名调用
+- 按需调用，惰性计算
+
+
 
 
 
