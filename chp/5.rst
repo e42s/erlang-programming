@@ -30,8 +30,8 @@
 
 实现
 
+堆栈
 ::
-
      %stack
      -module(stack).
      -export([emptyStack/0, stackEmpty/1, push/2, pop/1, top/1]).
@@ -58,7 +58,7 @@
 队列      Queye
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-
+队列
 ::  
      %queue.erl
      -module(queue).
@@ -73,12 +73,14 @@
 
      dequeue([_|xs]) -> xs;
      dequeue([]) -> error("dequeue:empty queue").
-
+ 
 
 
 
 堆
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  
+
+堆
 ::   
      %heap.erl
      -module(heap).
@@ -187,6 +189,101 @@ AVL树     AVLtrees
  分治算法
  回溯算法
  动态规划
+
+
+
+
+
+
+
+
+
+
+
+
+KMP算法：
+
+::
+   -module(kmp).
+   -export([patch/2]).
+
+   -define(Len(X),array:size(X)).
+   -define(Get(X,Y),array:get(X,Y)).
+   -define(Same(X,Y),string:equal(X,Y)).
+   -define(Set(X,Y,Z),array:set(X,Y,Z)).
+
+
+   %%% I,Content数组下标
+   %%% J，Keyword数组下标
+   %%% Next，Keyword数组用于回溯的值数组
+   patch(Content,Keyword) ->
+     I=0,J=0,
+     Next = get_next(Keyword),
+     compare(I,J,Content,Keyword,Next).
+
+   %%% C，Content
+   %%% K，Keyword
+   %%% N，Next
+    compare(I,J,C,K,N)->
+       case I < ?Len(C) of
+       true ->
+         case J== -1 of
+         true -> I1=I+1,
+             J1=J+1,
+             compare(I1,J1,C,K,N);
+         false ->
+             case ?Same(?Get(I,C),?Get(J,K)) of
+             true -> I1=I+1,
+                 J1=J+1,
+                 case J1==?Len(K) of
+                     true ->
+                     {true,{I-J,I}};  %%含有关键词,返回关键词范围
+                     false ->
+                     compare(I1,J1,C,K,N)
+                 end;
+             false ->
+                 J1=?Get(J,N),
+                 compare(I,J1,C,K,N)
+             end
+         end;
+      false ->
+         false                                        %%不含关键词
+    end.
+
+   %%% K,Keyword
+   %%% H J ,Next数组下标，H<J
+   %%% N, Next
+   get_next(K)->
+     H=-1,J=0,
+     N=array:new(array:size(K)),
+     N1=?Set(0,-1,N),
+     get_next(K,N1,H,J).
+
+   %%% K,Keyword
+   %%% H J ,Next数组下标，H<J
+   %%% N, Next
+   get_next(K,N,H,J)->
+      case J < ?Len(K)-1 of
+      true->      
+          case H ==-1 of
+        true -> J1=J+1,
+            H1=H+1,
+            N1=?Set(J1,H1,N),
+            get_next(K,N1,H1,J1);
+        false ->
+            case ?Same(?Get(J,K),?Get(H,K)) of
+                   true->J1=J+1,
+                     H1=H+1,
+                     N1=?Set(J1,H1,N),
+                     get_next(K,N1,H1,J1);
+                   false->
+                      H1=?Get(H,N),
+                      get_next(K,N,H1,J)
+            end
+        end;
+      false ->
+         N
+    end.
 
 
 算法并行化
