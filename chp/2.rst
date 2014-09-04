@@ -19,6 +19,7 @@ Redhat系列系统中，
 
 2.1.2 通过源代码安装
 ^^^^^^^^^^^^^^^^^^^^^^^^^
+
 1.获取Erlang源代码
 通过浏览器或wget等工具
 2.解压并安装
@@ -28,20 +29,13 @@ $ ./configure
 $ make
 $ sudo make install
 
-2.2 安装CEAN模块管理器
------------------------------
-类似Perl的CPAN,几乎包含所有Erlang开源项目.通过cean:install命令可用获取需要的模块
 
 
 
 
-
-
-
-
-
-2.3 运行Erlang代码
+2.2 运行Erlang代码
 -------------------
+
 Erlang Shell
 
 类似Python, Ruby等脚本语言，Erlang有一个交互式工作环境Eshell
@@ -55,6 +49,7 @@ Erlang Shell
 
 
 你可以在里面调用已定义函数，输入表达式。
+
 ::
     >1 2 + 1.
     3
