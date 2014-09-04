@@ -38,9 +38,12 @@ ANF?
 
 
 1.模式匹配实现多态
-::
-     -module(area).
-     -export([area/1])
+
+.. code-block:: erlang
+    :linenos:
+    
+    -module(area).
+    -export([area/1])
     
      %正方形
      area({square, Side}) ->
@@ -51,12 +54,12 @@ ANF?
         3.14*Radius*Radius;
 
      %三角形
-     area({triangle, A, B, C}) ->
+    area({triangle, A, B, C}) ->
          S = (A + B + C)/2,
          math:sqrt(S*(S-A)*(S-B)(S-C));
 
      %其他形状
-     area(Other) ->
+    area(Other) ->
          {undifined, Other}.
 
 
