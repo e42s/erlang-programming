@@ -31,8 +31,6 @@ $ sudo make install
 
 
 
-
-
 2.2 运行Erlang代码
 -------------------
 
@@ -42,7 +40,6 @@ Erlang Shell
 打开命令终端，输入erl启动Eshell。(Windows下也可双击"Erlang"图标。)
 
 ::
-   
    Eshell V5.9.2 (abort with ^G)
 
    >1
@@ -71,9 +68,9 @@ Erlang Shell
  
 
 
-
 当然也可也把程序写入文件。
 新建一个文件 hello.erl
+
 ::
      % hello.erl  
 
